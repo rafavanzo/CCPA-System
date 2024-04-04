@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
 
 import { LivrosRoutingModule } from './livros-routing.module';
 import { LivrosComponent } from './livros/livros.component';
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
+
 
 
 @NgModule({
@@ -13,7 +14,7 @@ import { LivrosComponent } from './livros/livros.component';
   imports: [
     CommonModule,
     LivrosRoutingModule,
-    MatTableModule
+    AppMaterialModule
   ]
 })
 export class LivrosModule { }
