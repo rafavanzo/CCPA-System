@@ -1,5 +1,7 @@
-import { Livro } from './../model/livro';
 import { Component } from '@angular/core';
+
+import { LivrosService } from '../services/livros.service';
+import { Livro } from './../model/livro';
 
 @Component({
   selector: 'app-livros',
@@ -8,15 +10,7 @@ import { Component } from '@angular/core';
 })
 export class LivrosComponent {
 
-  livros: Livro[] = [
-    { id_livro: 1,
-      codigo: '22',
-      titulo: 'Code Clean',
-      editora: 'Alta Books',
-      data_lancamento: '08/09/2009',
-      autor: 'Robert C. Martin',
-      genero: 'Estudo' }
-  ];
+  livros: Livro[] = [];
   displayedColumns = [
     'id_livro',
     'codigo',
@@ -27,8 +21,11 @@ export class LivrosComponent {
     'genero'
   ];
 
-  constructor() {
+  // livrosService: LivrosService;
 
+  constructor(private livrosService: LivrosService) {
+    // this.livrosService = new LivrosService();
+    this.livros = this.livrosService.list();
   }
 
   ngOnInit(): void {
