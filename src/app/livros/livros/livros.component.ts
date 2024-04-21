@@ -11,7 +11,8 @@ import { Livro } from './../model/livro';
 })
 export class LivrosComponent {
 
-  livros: Observable<Livro[]>;
+  livros$: Observable<Livro[]>;
+
   displayedColumns = [
     'id_livro',
     'codigo',
@@ -23,7 +24,7 @@ export class LivrosComponent {
   ];
 
   constructor(private livrosService: LivrosService) {
-    this.livros = this.livrosService.list();
+    this.livros$ = this.livrosService.list();
   }
 
   ngOnInit(): void {
