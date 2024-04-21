@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-
 import { LivrosService } from '../services/livros.service';
 import { Livro } from './../model/livro';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-livros',

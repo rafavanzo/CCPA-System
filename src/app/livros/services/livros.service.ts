@@ -1,24 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { first, tap } from 'rxjs';
 
 import { Livro } from '../model/livro';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LivrosService {
 
+  private readonly API = '/assets/livros.json';
+
   constructor(private httpClient: HttpClient) { }
 
-  list(): Livro[] {
-    return [
-      { id_livro: 1,
-        codigo: '22',
-        titulo: 'Code Clean',
-        editora: 'Alta Books',
-        data_lancamento: '08/09/2009',
-        autor: 'Robert C. Martin',
-        genero: 'Estudo' }
-    ];
+  list() {
+    return this.httpClient.get<Livro[]>(this.API)
+    .pipe(
+      first(),
+      tap(livros => console.log(livros))
+    );
   }
 }
