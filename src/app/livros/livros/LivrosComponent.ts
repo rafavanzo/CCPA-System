@@ -1,7 +1,10 @@
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Component } from '@angular/core';
+import { Observable, catchError, of } from 'rxjs';
+
 import { LivrosService } from '../services/livros.service';
 import { Livro } from './../model/livro';
-import { Observable } from 'rxjs';
+import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
 
 
 @Component({
@@ -22,8 +25,23 @@ export class LivrosComponent {
     'genero'
   ];
 
-  constructor(private livrosService: LivrosService) {
-    this.livros = this.livrosService.list();
+  constructor(
+    private livrosService: LivrosService,
+    public dialog: MatDialog
+  ) {
+    this.livros = this.livrosService.list()
+    .pipe(
+      catchError(error => {
+        this.onError('Erro ao carregar livros.');
+        return of([]);
+      })
+    )
+  }
+
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg
+    });
   }
 
   ngOnInit(): void {

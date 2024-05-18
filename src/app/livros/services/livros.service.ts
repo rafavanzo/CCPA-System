@@ -17,7 +17,7 @@ export class LivrosService {
     return this.httpClient.get<Livro[]>(this.API)
     .pipe(
       first(),
-      delay(5000),
+      delay(2000),
       tap(livros => console.log(livros))
     );
   }
