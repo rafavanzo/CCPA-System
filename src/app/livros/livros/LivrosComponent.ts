@@ -1,10 +1,10 @@
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Component } from '@angular/core';
-import { Observable, catchError, of } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { catchError, Observable, of } from 'rxjs';
 
+import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
 import { LivrosService } from '../services/livros.service';
 import { Livro } from './../model/livro';
-import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
 
 
 @Component({
