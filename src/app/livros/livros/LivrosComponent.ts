@@ -16,11 +16,11 @@ export class LivrosComponent {
 
   livros: Observable<Livro[]>;
   displayedColumns = [
-    'id_livro',
+    '_idLivro',
     'codigo',
     'titulo',
     'editora',
-    'data_lancamento',
+    'dataLancamento',
     'autor',
     'genero'
   ];

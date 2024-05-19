@@ -9,7 +9,7 @@ import { Livro } from '../model/livro';
 })
 export class LivrosService {
 
-  private readonly API = '/assets/livros.json';
+  private readonly API = '/api/livros';
 
   constructor(private httpClient: HttpClient) { }
 

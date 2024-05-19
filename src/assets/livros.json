@@ -1,9 +1,9 @@
 [
-  { "id_livro": "1",
+  { "_idLivro": "1",
     "codigo": "22",
     "titulo": "Code Clean",
     "editora": "Alta Books",
-    "data_lancamento": "08/09/2009",
+    "dataLancamento": "08/09/2009",
     "autor": "Robert C. Martin",
     "genero": "Estudo" }
 ]
