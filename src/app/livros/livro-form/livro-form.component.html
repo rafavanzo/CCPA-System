@@ -1,1 +1,46 @@
-<p>livro-form works!</p>
+<mat-card>
+  <mat-card-content>
+  <mat-toolbar color="primary"> Novo Livro </mat-toolbar>
+  <br>
+
+    <form [formGroup]="form">
+
+      <!-- código -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Código" formControlName="codigo">
+      </mat-form-field>
+
+      <!-- titulo -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Título" formControlName="titulo">
+      </mat-form-field>
+
+      <!-- editora -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Editora" formControlName="editora">
+      </mat-form-field>
+
+      <!-- data lançamento, formato dia mes ano -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Data de lançamento" formControlName="dataLancamento" type="date">
+      </mat-form-field>
+
+      <!-- autor -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Autor" formControlName="autor">
+      </mat-form-field>
+
+      <!-- genero -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Gênero" formControlName="genero">
+      </mat-form-field>
+
+    </form>
+  </mat-card-content>
+
+  <!-- bottons, no centro -->
+  <mat-card-actions class="centro">
+    <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>
