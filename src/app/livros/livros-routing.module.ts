@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LivrosComponent } from './livros/LivrosComponent';
+import { LivroFormComponent } from './livro-form/livro-form.component';
 
 const routes: Routes = [
-  { path: '', component: LivrosComponent}
+  { path: '', component: LivrosComponent},
+  { path: 'new', component: LivroFormComponent}
 ];
 
 @NgModule({

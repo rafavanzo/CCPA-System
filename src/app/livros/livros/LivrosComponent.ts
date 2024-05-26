@@ -5,6 +5,7 @@ import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
 import { LivrosService } from '../services/livros.service';
 import { Livro } from './../model/livro';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -22,12 +23,15 @@ export class LivrosComponent {
     'editora',
     'dataLancamento',
     'autor',
-    'genero'
+    'genero',
+    'actions'
   ];
 
   constructor(
     private livrosService: LivrosService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.livros = this.livrosService.list()
     .pipe(
@@ -47,4 +51,7 @@ export class LivrosComponent {
   ngOnInit(): void {
   }
 
+  onAdd() {
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
 }

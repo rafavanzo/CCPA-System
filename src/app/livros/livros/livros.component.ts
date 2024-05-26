@@ -20,7 +20,8 @@ export class LivrosComponent {
     'editora',
     'dataLancamento',
     'autor',
-    'genero'
+    'genero',
+    'actions'
   ];
 
   constructor(private livrosService: LivrosService) {
