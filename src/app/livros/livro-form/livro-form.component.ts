@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { LivrosService } from '../services/livros.service';
@@ -12,21 +12,20 @@ import { LivrosService } from '../services/livros.service';
 })
 export class LivroFormComponent implements OnInit {
 
-  form: UntypedFormGroup;
+  form = this.formBuilder.group({
+    codigo: [''],
+    titulo: [''],
+    editora: [''],
+    dataLancamento: [''],
+    autor: [''],
+    genero: ['']
+  });
 
-  constructor(private formBuilder: UntypedFormBuilder,
+  constructor(private formBuilder: NonNullableFormBuilder,
               private service: LivrosService,
               private snackBar: MatSnackBar,
               private location: Location
   ) {
-    this.form = this.formBuilder.group({
-      codigo: [''],
-      titulo: [''],
-      editora: [''],
-      dataLancamento: [''],
-      autor: [''],
-      genero: ['']
-    });
   }
 
   ngOnInit(): void {

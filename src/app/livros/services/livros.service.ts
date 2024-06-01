@@ -31,7 +31,7 @@ export class LivrosService {
     livro.dataLancamento = data.isValid() ? data.format('DD/MM/YYYY') : 'Data Inválida';
   }
 
-  save(record: Livro) {
-    return this.httpClient.post<Livro>(this.API, record)
+  save(record: Partial<Livro>) {
+    return this.httpClient.post<Livro>(this.API, record).pipe(first());
   }
 }
