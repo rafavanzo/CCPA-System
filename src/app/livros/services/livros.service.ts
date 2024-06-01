@@ -20,19 +20,15 @@ export class LivrosService {
       first(),
       delay(1000),
       tap(livros => {
-        livros.forEach(livro => this.formatData(livro));
+        livros.forEach(livro => this.formatDate(livro));
         console.log(livros);
       })
     );
   }
 
-  formatData(livro: Livro) {
+  formatDate(livro: Livro) {
     let data = moment(livro.dataLancamento, 'DD/MM/YYYY');
-    if (data.isValid()) {
-      livro.dataLancamento = data.format('DD/MM/YYYY');
-    } else {
-      console.error(`Invalid date: ${livro.dataLancamento}`);
-    }
+    livro.dataLancamento = data.isValid() ? data.format('DD/MM/YYYY') : 'Data Inválida';
   }
 
   save(record: Livro) {
