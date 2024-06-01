@@ -3,7 +3,7 @@
   <mat-toolbar color="primary"> Novo Livro </mat-toolbar>
   <br>
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" class="min-width">
 
       <!-- código -->
       <mat-form-field class="full-width">
@@ -33,7 +33,7 @@
       <!-- genero -->
       <mat-form-field class="full-width">
         <mat-label>Gênero</mat-label>
-        <mat-select formControlName="genero">
+        <mat-select formControlName="genero" class="no-arrow">
           <mat-option value="null"> </mat-option>
           <mat-option value="Ação">Ação</mat-option>
           <mat-option value="Aventura">Aventura</mat-option>

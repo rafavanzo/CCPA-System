@@ -18,3 +18,7 @@ mat-card {
   justify-content: center;
   gap: 10px;
 }
+
+.no-arrow .mat-select-arrow {
+  border: none;
+}
