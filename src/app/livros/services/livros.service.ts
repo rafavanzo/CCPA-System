@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, first, tap } from 'rxjs';
+import moment from 'moment';
 
 import { Livro } from '../model/livro';
 
@@ -18,8 +19,20 @@ export class LivrosService {
     .pipe(
       first(),
       delay(1000),
-      tap(livros => console.log(livros))
+      tap(livros => {
+        livros.forEach(livro => this.formatData(livro));
+        console.log(livros);
+      })
     );
+  }
+
+  formatData(livro: Livro) {
+    let data = moment(livro.dataLancamento, 'DD/MM/YYYY');
+    if (data.isValid()) {
+      livro.dataLancamento = data.format('DD/MM/YYYY');
+    } else {
+      console.error(`Invalid date: ${livro.dataLancamento}`);
+    }
   }
 
   save(record: Livro) {

@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { LivrosService } from '../services/livros.service';
@@ -12,20 +12,20 @@ import { LivrosService } from '../services/livros.service';
 })
 export class LivroFormComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
               private service: LivrosService,
               private snackBar: MatSnackBar,
               private location: Location
   ) {
     this.form = this.formBuilder.group({
-      codigo: [null],
-      titulo: [null],
-      editora: [null],
-      dataLancamento: [null],
-      autor: [null],
-      genero: [null]
+      codigo: [''],
+      titulo: [''],
+      editora: [''],
+      dataLancamento: [''],
+      autor: [''],
+      genero: ['']
     });
   }
 
@@ -37,7 +37,6 @@ export class LivroFormComponent implements OnInit {
       .subscribe({
         next: result => this.onSuceess(),
         error: error => {
-          console.error(error);
           this.onError();
         }
       });
