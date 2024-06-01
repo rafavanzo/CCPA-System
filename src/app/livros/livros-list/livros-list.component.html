@@ -1,0 +1,62 @@
+<mat-table [dataSource]="livros">
+
+  <!-- ID Column
+  <ng-container matColumnDef="_idLivro">
+    <mat-header-cell  *mmat-header-celleaderCellDef>No.</mat-header-cell>
+    <mat-cell  *matCellDef="let element">{{ element._idLivro }}</mat-cell>
+  </ng-container> -->
+
+  <!-- Codigo Column -->
+  <ng-container matColumnDef="codigo">
+    <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.codigo }}</mat-cell>
+  </ng-container>
+
+  <!-- Titulo Column -->
+  <ng-container matColumnDef="titulo">
+    <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.titulo }}</mat-cell>
+  </ng-container>
+
+  <!-- Editora Column -->
+  <ng-container matColumnDef="editora">
+    <mat-header-cell *matHeaderCellDef>Editora</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.editora }}</mat-cell>
+  </ng-container>
+
+  <!-- Data Lançamento Column -->
+  <ng-container matColumnDef="dataLancamento">
+    <mat-header-cell *matHeaderCellDef>Data Lançamento</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.dataLancamento }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Autor Column -->
+  <ng-container matColumnDef="autor">
+    <mat-header-cell *matHeaderCellDef>Autor</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.autor }}</mat-cell>
+  </ng-container>
+
+  <!-- Gênero Column -->
+  <ng-container matColumnDef="genero">
+    <mat-header-cell *matHeaderCellDef>Gênero</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.genero }}</mat-cell>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" aria-label="Editar um Livro">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Excluir um Livro">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
