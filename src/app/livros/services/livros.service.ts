@@ -26,16 +26,24 @@ export class LivrosService {
     );
   }
 
-  formatDate(livro: Livro) {
+  loadById(id: string) {
+    return this.httpClient.get<Livro>(`${this.API}/${id}`);
+  }
+
+  save(record: Partial<Livro>) {
+    return record._idLivro ? this.update(record) : this.create(record);
+  }
+
+  private formatDate(livro: Livro) {
     let data = moment(livro.dataLancamento, 'DD/MM/YYYY');
     livro.dataLancamento = data.isValid() ? data.format('DD/MM/YYYY') : 'Data Inválida';
   }
 
-  loadById(id: string) {
-    return this.httpClient.get<Livro>(`${this.API}/${id}`).pipe(first());
+  private create(record: Partial<Livro>) {
+    return this.httpClient.post<Livro>(this.API, record).pipe(first());
   }
 
-  save(record: Partial<Livro>) {
-    return this.httpClient.post<Livro>(this.API, record).pipe(first());
+  private update(record: Partial<Livro>) {
+    return this.httpClient.put<Livro>(`${this.API}/${record._idLivro}`, record);
   }
 }

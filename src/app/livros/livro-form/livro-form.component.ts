@@ -37,7 +37,6 @@ export class LivroFormComponent implements OnInit {
 
   ngOnInit(): void {
     const livro: Livro = this.route.snapshot.data['livro'];
-    console.log(livro);
     this.form.setValue({
       _idLivro: livro._idLivro,
       codigo: livro.codigo,
