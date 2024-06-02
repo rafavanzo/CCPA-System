@@ -44,6 +44,10 @@ export class LivrosService {
   }
 
   private update(record: Partial<Livro>) {
-    return this.httpClient.put<Livro>(`${this.API}/${record._idLivro}`, record);
+    return this.httpClient.put<Livro>(`${this.API}/${record._idLivro}`, record).pipe(first());
+  }
+
+  remove(id: string) {
+    return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
   }
 }

@@ -68,12 +68,12 @@ export class LivroFormComponent implements OnInit {
   }
 
   private onSuceess() {
-    this.snackBar.open('Livro salvo com sucesso!', '', { duration: 5000 });
+    this.snackBar.open('Livro salvo com sucesso!', 'X', { duration: 5000 });
     this.onCancel();
   }
 
   private onError() {
-    this.snackBar.open('Erro ao salvar livro.', 'Fechar', { duration: 10000 });
+    this.snackBar.open('Erro ao salvar livro.', 'X', { duration: 10000 });
   }
 
 }
