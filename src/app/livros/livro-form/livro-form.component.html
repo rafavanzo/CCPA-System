@@ -34,14 +34,8 @@
       <mat-form-field class="full-width">
         <mat-label>Gênero</mat-label>
         <mat-select formControlName="genero" class="no-arrow">
-          <mat-option value="null"> </mat-option>
-          <mat-option value="Ação">Ação</mat-option>
-          <mat-option value="Aventura">Aventura</mat-option>
-          <mat-option value="Comédia">Comédia</mat-option>
-          <mat-option value="Drama">Drama</mat-option>
-          <mat-option value="Ficção">Ficção</mat-option>
-          <mat-option value="Romance">Romance</mat-option>
-          <mat-option value="Terror">Terror</mat-option>
+          <mat-option value=""> </mat-option>
+          <mat-option *ngFor="let genero of generos" [value]="genero">{{ genero }}</mat-option>
         </mat-select>
       </mat-form-field>
 

@@ -12,9 +12,12 @@ export class LivroResolver implements Resolve<Livro> {
   constructor(private livrosService: LivrosService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Livro> {
-    if (route.params && route.params['id']) {
-      return this.livrosService.loadById(route.params['id']);
+
+    const id = route.params?.['idLivro'];
+    if (id) {
+      return this.livrosService.loadById(id);
     }
+
     return of({
       _idLivro: '',
       codigo: '',
