@@ -44,4 +44,9 @@ export class LivrosComponent {
   onAdd() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
+
+  onEdit(livro: Livro) {
+    this.router.navigate(['edit', livro._idLivro], {relativeTo: this.route});
+  }
+
 }

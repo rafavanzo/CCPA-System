@@ -11,6 +11,7 @@
 
       <app-livros-list *ngIf="livros$ | async as livros; else loading"
       [livros] = "livros"
+      (edit)="onEdit($event)"
       ></app-livros-list>
 
       <ng-template #loading>

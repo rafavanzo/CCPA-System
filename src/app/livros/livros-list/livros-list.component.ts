@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 
 import { Livro } from '../model/livro';
 import { LivrosService } from '../services/livros.service';
@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class LivrosListComponent {
 
     @Input() livros: Livro[] = [];
+    @Output() edit = new EventEmitter<Livro>();
+
     readonly displayedColumns = [
         // '_idLivro',
         'codigo',
@@ -30,5 +32,9 @@ export class LivrosListComponent {
     }
 
     ngOnInit(): void {
+    }
+
+    onEdit(livro: Livro) {
+      this.edit.emit(livro);
     }
 }

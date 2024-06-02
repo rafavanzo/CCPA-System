@@ -21,7 +21,7 @@ export class LivrosService {
       delay(1000),
       tap(livros => {
         livros.forEach(livro => this.formatDate(livro));
-        console.log(livros);
+        // console.log(livros);
       })
     );
   }
@@ -29,6 +29,10 @@ export class LivrosService {
   formatDate(livro: Livro) {
     let data = moment(livro.dataLancamento, 'DD/MM/YYYY');
     livro.dataLancamento = data.isValid() ? data.format('DD/MM/YYYY') : 'Data Inválida';
+  }
+
+  loadById(id: string) {
+    return this.httpClient.get<Livro>(`${this.API}/${id}`).pipe(first());
   }
 
   save(record: Partial<Livro>) {
