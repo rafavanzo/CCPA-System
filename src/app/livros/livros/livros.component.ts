@@ -8,6 +8,7 @@ import { ErrorDialogComponent } from '../../shared/components/error-dialog/error
 import { LivrosService } from '../services/livros.service';
 import { Livro } from './../model/livro';
 import { ConfirmationDialogComponent } from '../../shared/components/confirmation-dialog/confirmation-dialog.component';
+import { AuthService } from '../../login/services/auth.service';
 
 
 @Component({
@@ -24,19 +25,10 @@ export class LivrosComponent {
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {
-    this.loadLivros();
-  }
 
-  loadLivros() {
-    this.livros$ = this.livrosService.list()
-      .pipe(
-        catchError(error => {
-          this.onError('Erro ao carregar livros.');
-          return of([]);
-        })
-      )
   }
 
   onError(errorMsg: string) {
@@ -46,6 +38,7 @@ export class LivrosComponent {
   }
 
   ngOnInit(): void {
+    this.checkSession();
   }
 
   onAdd() {
@@ -76,4 +69,28 @@ export class LivrosComponent {
       }
     });
   }
+
+  checkSession(): void {
+    this.authService.checkSession().subscribe({
+      next: result => {
+        console.log('teste:', result);
+        this.loadLivros();
+      },
+      error: error => {
+        this.onError('Erro ao verificar sessão.');
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  loadLivros() {
+    this.livros$ = this.livrosService.list()
+      .pipe(
+        catchError(error => {
+          this.onError('Erro ao carregar livros.');
+          return of([]);
+        })
+      )
+  }
+
 }

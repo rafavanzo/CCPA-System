@@ -1,0 +1,28 @@
+<mat-card>
+
+  <mat-card-content>
+    <mat-toolbar color="primary"> Faça seu login: </mat-toolbar>
+    <br>
+
+    <form [formGroup]="loginForm" class="min-width">
+
+      <!-- usuário, limite 10, e somente numeros-->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Matricula" formControlName="usuario" type="number">
+      </mat-form-field>
+
+      <!-- senha -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Senha" formControlName="password" type="password">
+      </mat-form-field>
+
+    </form>
+  </mat-card-content>
+
+  <!-- botões, no centro -->
+  <mat-card-actions class="centro">
+    <button mat-raised-button color="primary" (click)="onLogin()">Entrar</button>
+    <!-- <button mat-raised-button (click)="onCancel()">Cancelar</button> -->
+  </mat-card-actions>
+
+</mat-card>

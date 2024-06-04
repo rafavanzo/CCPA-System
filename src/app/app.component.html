@@ -1,4 +1,13 @@
 <mat-toolbar color="primary">
   <span>Sistema Biblioteca CCPA</span>
+  <span class="min-spacer"></span>
+
+  <button mat-button *ngIf="isActive('Livros')" [disabled]="!isActive('Livros')" (click)="onClick('Livros')">Livros</button>
+  <button mat-button *ngIf="isActive('Emprestimos')" [disabled]="!isActive('Emprestimos')" (click)="onClick('Emprestimos')">Emprestimos</button>
+  <button mat-button *ngIf="isActive('Usuarios')" [disabled]="!isActive('Usuarios')" (click)="onClick('Usuarios')">Usuarios</button>
+
+  <span class="spacer"></span>
+  <button mat-raised-button *ngIf="isActive('usuario')" [disabled]="!isActive('usuario')">{{ userName }}</button>
+  <button mat-raised-button *ngIf="isActive('usuario')" [disabled]="!isActive('usuario')"color="warn" (click)="logout()">Sair</button>
 </mat-toolbar>
 <router-outlet></router-outlet>
