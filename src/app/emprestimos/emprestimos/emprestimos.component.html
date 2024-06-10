@@ -1,0 +1,25 @@
+<mat-card>
+  <div class="column_flex mat-elevation-z8">
+    <mat-card-content>
+      <mat-toolbar color="primary">
+        Lista de Emprestimos
+        <span class="add-button"></span>
+        <button mat-mini-fab color="accent" aria-label="Adicionar um Livro">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <!-- <app-livros-list *ngIf="livros$ | async as livros; else loading"
+      [livros] = "livros"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)"
+      ></app-livros-list> -->
+
+      <ng-template #loading>
+        <div class="loading-spinner">
+          <mat-spinner></mat-spinner>
+        </div>
+      </ng-template>
+    </mat-card-content>
+  </div>
+</mat-card>
